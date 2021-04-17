@@ -30,7 +30,8 @@ type Game() =
     let mutable VertexArrayObject = Unchecked.defaultof<int>
     // let mutable ElementBufferObject = Unchecked.defaultof<int>
 
-    member this.Shader = Shader("../../../shader.vert", "../../../shader.frag")
+    let shader = Shader("../../../shader.vert", "../../../shader.frag")
+    member this.Shader = shader
 
     override o.OnKeyDown e =
         if e.Key = Keys.Escape then
@@ -48,7 +49,7 @@ type Game() =
         // GL.BindBuffer(BufferTarget.ElementArrayBuffer, ElementBufferObject)
 
         let hexVertices : float32 [] =
-            [| 0.5f; -0.5f; 0.0f //Bottom-left vertex
+            [| -0.5f; -0.5f; 0.0f //Bottom-left vertex
                0.5f; -0.5f; 0.0f //Bottom-right vertex
                0.0f;  0.5f; 0.0f
             |]
